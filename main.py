@@ -1,0 +1,45 @@
+from modules.speech_to_text import transcribe_audio
+from modules.text_to_speech import speak
+from modules.brain import generate_response
+from config import BAD_PATTERNS
+
+import speech_recognition as sr
+import time
+
+
+def main():
+    recognizer = sr.Recognizer()
+    mic = sr.Microphone(sample_rate=16000)
+
+    print("Listening... (press Ctrl+C to stop)")
+
+    with mic as source:
+        recognizer.adjust_for_ambient_noise(source)
+
+        while True:
+            try:
+                recognizer.pause_threshold = 2.0
+                print("[Listening]")
+                audio = recognizer.listen(source)
+                print("[Processing]")
+
+                text = transcribe_audio(audio)
+
+                if text and all(bad not in text for bad in BAD_PATTERNS):
+                    print(f"User: {text}")
+                    print("[Thinking]")
+                    answer = generate_response(text)
+                    print(f"AI: {answer}")
+                    print("[Speaking]")
+                    speak(answer)
+
+            except KeyboardInterrupt:
+                print("\nListening stopped.")
+                break
+            except Exception as e:
+                print(f"Error: {e}")
+                time.sleep(1)
+
+
+if __name__ == "__main__":
+    main()
