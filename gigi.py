@@ -15,9 +15,7 @@ from transformers import pipeline
 import pyttsx3
 from ollama import chat
 
-# ----------------------------
-# Constants
-# ----------------------------
+
 SAMPLE_RATE: int = 16000
 WHISPER_MODEL: str = "openai/whisper-small"
 LANGUAGE: str = "fr"
@@ -99,8 +97,10 @@ def main():
                     print(f"AI: {answer}")
 
                     print("[Speaking]")
-                    tts_engine.say(answer)
-                    tts_engine.runAndWait()
+                    for segment in answer.split(". "):
+                        if segment.strip():
+                            tts_engine.say(segment.strip())
+                            tts_engine.runAndWait()
 
             except KeyboardInterrupt:
                 print("\nListening stopped.")
@@ -109,8 +109,5 @@ def main():
                 print(f"Error: {e}")
 
 
-# ----------------------------
-# Entry Point
-# ----------------------------
 if __name__ == "__main__":
     main()
