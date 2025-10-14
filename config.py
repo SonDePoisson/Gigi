@@ -1,5 +1,6 @@
 SAMPLE_RATE = 16000
 WHISPER_MODEL = "openai/whisper-small"
+COQUI_MODEL = "tts_models/fr/css10/vits"
 LANGUAGE = "fr"
 OLLAMA_MODEL = "llama3.1:8b"
 BAD_PATTERNS = ["Sous-titres réalisés par la communauté d'Amara.org"]
