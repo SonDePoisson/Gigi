@@ -1,7 +1,7 @@
-from modules.speech_to_text import transcribe_audio
+from modules.speech_to_text import transcribe, init_asr
 from modules.text_to_speech import speak
 from modules.brain import generate_response
-from config import BAD_PATTERNS
+from config import BAD_PATTERNS, SAMPLE_RATE
 
 import speech_recognition as sr
 import time
@@ -9,7 +9,8 @@ import time
 
 def main():
     recognizer = sr.Recognizer()
-    mic = sr.Microphone(sample_rate=16000)
+    mic = sr.Microphone(sample_rate=SAMPLE_RATE)
+    asr_pipeline = init_asr()
 
     print("Listening... (press Ctrl+C to stop)")
 
@@ -23,7 +24,7 @@ def main():
                 audio = recognizer.listen(source)
                 print("[Processing]")
 
-                text = transcribe_audio(audio)
+                text = transcribe(asr_pipeline, audio)
 
                 if text and all(bad not in text for bad in BAD_PATTERNS):
                     print(f"User: {text}")

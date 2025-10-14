@@ -1,6 +1,6 @@
-numpy==2.3.3
+numpy==1.26.4
 ollama==0.6.0
 pyttsx3==2.99
 speechrecognition==3.14.3
 torch==2.2.2
-transformers==4.55.4
+transformers==4.39.2
