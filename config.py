@@ -1,5 +1,5 @@
 SAMPLE_RATE = 16000
-WHISPER_MODEL = "openai/whisper-small"
+WHISPER_MODEL = "openai/whisper-small"  # whisper-large-v3
 COQUI_MODEL = "tts_models/fr/css10/vits"
 LANGUAGE = "fr"
 OLLAMA_MODEL = "llama3.1:8b"
