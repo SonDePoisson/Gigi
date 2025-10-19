@@ -1,4 +1,4 @@
-from config import ENV_PATH
+from config import ENV_PATH, VIKING_ID, FLASH_2_5_MODEL
 from dotenv import load_dotenv
 from elevenlabs.client import ElevenLabs
 from elevenlabs.play import play
@@ -15,6 +15,7 @@ def init_tts(TTS: str = None) -> ElevenLabs | None:
             api_key=os.getenv("ELEVENLABS_API_KEY"),
         )
         print("[TTS] : ElevenLabs")
+        speak("As-tu une question ?", elevenlabs, VIKING_ID, FLASH_2_5_MODEL)
     else:
         elevenlabs = None
         print("[TTS] : gTTS")

@@ -11,7 +11,7 @@ def main():
     recognizer = sr.Recognizer()
     mic = sr.Microphone(sample_rate=SAMPLE_RATE)
     asr_pipeline = init_asr()
-    elevenlab_pipe = init_tts()  # Add 'Eleven' to use ElevenLabs
+    elevenlab_pipe = init_tts("Eleven")  # Add 'Eleven' to use ElevenLabs
 
     print("Listening... (press Ctrl+C to stop)")
 
