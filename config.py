@@ -1,5 +1,4 @@
 from pathlib import Path
-import os
 
 ENV_PATH = Path(__file__).resolve().parent / ".env"
 
@@ -9,15 +8,6 @@ WHISPER_MODEL = "openai/whisper-small"  # whisper-large-v3
 LANGUAGE = "fr"
 OLLAMA_MODEL = "llama3.2:3b"
 BAD_PATTERNS = ["Sous-titres réalisés par la communauté d'Amara.org"]
-
-
-# # LLM (compatible OpenAI/OpenRouter)
-# OPENAI_API_KEY = os.getenv("OPENAI_API_KEY", "")
-# OPENAI_BASE_URL = os.getenv("OPENAI_BASE_URL", None)  # ← pour OpenRouter on met l’URL
-# OPENAI_MODEL = os.getenv("OPENAI_MODEL", "meta-llama/llama-3.1-8b-instruct:free")
-# LLM_TEMPERATURE = float(os.getenv("LLM_TEMPERATURE", "0.5"))
-# LLM_MAX_TOKENS = int(os.getenv("LLM_MAX_TOKENS", "300"))
-
 
 SYSTEM_PROMPT = """
 Tu es Rùlia, une assistante vocale française, experte du jeu "Odin", un jeu de défausse pour 2 à 6 joueurs.
@@ -112,11 +102,6 @@ faq:
   - q: "Quel âge minimum ?"
     a: "À partir de 7 ans."
 """
-
-
-# # Headers OpenRouter (facultatif mais utile)
-# OPENROUTER_SITE_URL = os.getenv("OPENROUTER_SITE_URL", None)
-# OPENROUTER_APP_NAME = os.getenv("OPENROUTER_APP_NAME", None)
 
 # ElevenLabs
 VIKING_ID = "ljo9gAlSqKOvF6D8sOsX"
