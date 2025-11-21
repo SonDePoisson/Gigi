@@ -22,9 +22,7 @@ def init_tts(TTS: str = None) -> ElevenLabs | None:
     return elevenlabs
 
 
-def speak(
-    text: str, elevenlabs: ElevenLabs | None, voice: str = None, model: str = None
-):
+def speak(text: str, elevenlabs: ElevenLabs | None = None, voice: str = None, model: str = None):
     if elevenlabs is None:
         tts = gTTS(text=text, lang="fr")
 
